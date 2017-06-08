@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button onclick="doAdd();">클릭</button>
+	<h1 id="msg"></h1>
+	
+	<script>
+		var i=0;
+		var msg = document.querySelector("#msg");
+		function doAdd() {
+			i++;
+			msg.innerHTML = i;
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	나이 : <input type="text" id="age" />
+	<button onclick="doAction();">확인</button>
+	<h1 id="msg"></h1>
+	<script>
+		function doAction() {
+			// id가 age인 입력창에 입력된 값을 콘솔창에 출력
+			var age = document.querySelector("#age");
+			console.log(age.value);
+// 			age.value = 100;
+			var msg = document.querySelector("#msg");
+			if(isNaN(age.value)) {
+				alert("숫자가 아닙니다.");
+				msg.innerHTML = "숫자를 입력하세요."
+				age.value="";
+			}
+			else {
+				alert("성공");
+				msg.innerHTML = "성공"
+			}
+		}
+	</script>  
+</body>
+</html>

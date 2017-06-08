@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="../../js/library.js"></script>
+    <script>
+    	
+        function chImgSize(type) {
+        	var val;
+        	if(type === 'big'){
+        		val = 5;
+        	} else {
+        		val = -5;
+        	}
+			$("#lottoImg").attr("width",parseInt($("#lottoImg").attr("width"))+val);			
+			$("#lottoImg").attr("height",parseInt($("#lottoImg").attr("height"))+val);			
+        }
+    </script>
+</head>
+<body>
+	<input type="button" value="크게" onclick="chImgSize('big')" />
+	<input type="button" value="작게" onclick="chImgSize('small')" />
+	<br /><br />
+	<div id="imgDiv">
+		<img id="lottoImg" src="ball41.gif" width="33" height="33" />
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../../js/library.js"></script>
+</head>
+<body>
+<button onclick="add();">추가</button>
+<div id="area"></div>
+
+<script>
+	var i =1;
+	function add() {
+		var child= $("<div>").attr("id","child_"+i);
+		child.appendChild($("<b>")).html("추가된 DIV id : "+child.attr("id")+"   ");
+		child.appendChild($("<input>").attr("onclick","remove("+i+")").attr("type","button").attr("value","삭제"));
+		$("#area").appendChild(child);
+		i++;
+	}
+	function remove(idx) {
+		$("#child_"+idx).remove();
+	}
+</script>
+</body>
+</html>

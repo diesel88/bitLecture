@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="daum.js"></script>
+</head>
+<body>
+	<h2>다음 블로그</h2>
+	<div id="blogDiv">
+	<table>
+		<thead>
+			<th>블로거</th>
+			<th>제목</th>
+			<th>링크</th>
+		</thead>
+		<tbody id="contents">
+		
+		</tbody>
+		
+	</table>	
+	
+	</div>
+	
+	<script>
+		var items = blog.channel.item;
+		console.dir(items);
+// 		for(var item in items) {
+		for(var i =0; i < items.length; i++) {
+			var row = "<tr><td>"+items[i].author+"</td><td>"+items[i].title+"</td><td><a href='"+items[i].link+"'>이동</a></td></tr>"
+			var contents = document.querySelector("#contents");
+			contents.innerHTML = contents.innerHTML + row;
+		}
+	</script>	
+</body>
+</html>

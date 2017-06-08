@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../../js/library.js">
+
+</script>
+</head>
+<body>
+	<div id="area"></div>
+	<ul>
+		<li><a href="#" onclick="addElement(1)">문자열 박스 생성</a></li>
+		<li><a href="#" onclick="addElement(2)">비밀번호 박스 생성</a></li>
+		<li><a href="#" onclick="addElement(3)">체크 박스 생성</a></li>
+		<li><a href="#" onclick="addElement(4)">라디오 버튼 생성</a></li>
+		<li><a href="#" onclick="addElement(5)">버튼 생성</a></li>
+		<li><a href="#" onclick="addElement(6)">콤보 박스 생성</a></li>
+	
+	</ul>
+
+<script>
+	function addElement(val) {
+		var area = $("#area");
+		switch(val) {
+		case 1 :
+			$("#area").appendChild($("<label>").html("문자열 : "));
+			$("#area").appendChild($("<input>"));
+			$("#area").appendChild($("<br>"));
+			break;
+		case 2 :
+			$("#area").appendChild($("<label>").html("비밀번호 : "));
+			$("#area").appendChild($("<input>").attr("type","password"));
+			$("#area").appendChild($("<br>"));
+			break;
+		case 3 :
+			$("#area").appendChild($("<input>").attr("type","checkbox"));
+			$("#area").appendChild($("<label>").html("체크박스 "));
+			$("#area").appendChild($("<br>"));
+			break;
+		case 4 :
+			$("#area").appendChild($("<input>").attr("type","radio"));
+			$("#area").appendChild($("<label>").html("라디오 버튼 : "));
+			$("#area").appendChild($("<br>"));
+			break;
+		case 5 :
+			$("#area").appendChild($("<input>").attr("type","button").attr("value","버튼"));
+			$("#area").appendChild($("<br>"));
+			break;
+		case 6 :
+			var sel = $("#area").appendChild($("<select>"));
+			for (var i=1; i < 6; i++) {
+				sel.appendChild($("<option>").html('콤보항목->'+i));
+			}
+			$("#area").appendChild($("<br>"));
+			break;
+		}
+	}
+</script>
+</body>
+</html>

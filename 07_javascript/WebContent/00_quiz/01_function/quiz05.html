@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>3초동안 누가 많이 클릭하나</h1>
+<button onclick="increase();">클릭</button>
+<div id="msg">클릭하세요.</div>
+<script>
+setTimeout(func, 3000);
+var stop = false;
+
+function func() {
+	stop = true;
+}
+
+	
+function increase() {
+	var msg = document.querySelector("#msg");
+	console.log(msg.innerHTML);
+	if(isNaN(msg.innerHTML)){
+		msg.innerHTML=0;
+	}
+	if(!stop) {
+		msg.innerHTML = parseInt(msg.innerHTML) + 1;
+	}
+}
+
+
+</script>
+</body>
+</html>

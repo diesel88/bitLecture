@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var MyMap = {
+			idx : 0,
+			arr : [],
+			put : function (key, value) {
+				this.arr[this.idx] = {key:key, value: value};
+				this.idx++;
+				
+			},
+			del : function (key) {
+				for(var i=0; i < this.arr.length; i++) {
+					if (this.arr[i].key === key) {
+						delete arr[i];
+						
+					}
+				}
+			},
+			size : function () {
+				return this.arr.length;
+			},
+			clear : function () {
+				this.arr = [];
+				this.idx=0;
+				
+				
+			},
+			get : function (key) {
+				for(var i=0; i < this.idx; i++) {
+					if (this.arr[i].key === key) {
+						return this.arr[i].value;
+					}
+				}
+				return;
+			}
+	};
+	// MyMap 객체 구현하기
+	var mData = MyMap;
+	mData.put("id", "sbc");
+	mData.put("name", "sonbyungchan");
+	
+	alert(mData.size());      // 2
+	alert(mData.get("id"));   // sbc
+	mData.del("id");          
+	alert(mData.get("id"));   // undefined	
+	mData.clear();
+	alert(mData.size());      // 0
+</script>
+</head>
+<body>
+
+</body>
+</html>

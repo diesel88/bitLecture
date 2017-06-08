@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- <script src="library.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<div id="a">테스트1</div>
+	<div class="b">테스트2</div>
+	<div">테스트3</div>
+	<script>
+		var divEl = document.querySelector("#a");
+		
+// 		var divEl = mlec("#a");
+		var divEl1 = $(".b");
+		console.log(divEl1[0].innerHTML);
+// 		console.log(divEl1.html());
+		
+		var divEl2 = $(".b");
+// 		console.log(divEl2.innerHTML);
+		console.log(divEl2.html());
+		
+		var divEl3 = $("div");
+// 		console.log(divEl3.innerHTML);
+		console.log(divEl3.html());
+	</script>
+</body>
+</html>
