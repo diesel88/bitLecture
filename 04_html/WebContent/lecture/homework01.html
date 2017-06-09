@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.headertable, .content, .footertable {
+	width: 800px;
+	border-collapse : collapse;
+}
+
+.content th, .content td {
+	border: 1px solid #444;
+	align: center;
+	valign : middle;
+}
+.left {
+	text-align : center;
+}
+</style>
+</head>
+<body>
+	<center>
+	<table class="headertable">
+		<tr>
+			<td colspan="2"><h1>회원정보입력</h1></td>
+		</tr>
+		<tr>
+			<td colspan="2"><hr size="3" color="black"></td>
+		</tr>
+
+	</table>
+	<table class="content">
+		<tr>
+			<td width="200" text-align="center" class="left">*이름</td>
+			<td><input type="text" name="name"></td>
+		</tr>
+		<tr>
+			<td class="left">*아이디</td>
+			<td valign="middle"><input type="text" name="id"><img
+				src="../images/confirm.gif"></td>
+		</tr>
+		<tr>
+			<td class="left">*비밀번호</td>
+			<td><input type="password" maxlength="16" name="pwd">* 영문 대소문자/숫자/특수문자를 혼용하여 2종류 10~16자 또는 3종류 8~16자</td>
+		</tr>
+		<tr>
+			<td class="left">*비밀번호 확인</td>
+			<td><input type="password" maxlength="16" name="pwd2"></td>
+		</tr>
+		<tr>
+			<td class="left">*생일/성별</td>
+			<td>
+				<select name="year">
+					<option value="0">선택</option>
+					<option value="1976">1976</option>
+					<option value="1977">1977</option>
+					<option value="1978">1978</option>
+					<option value="1979">1979</option>
+				</select>
+				년
+				<select name="month">
+					<option value="0">선택</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+				월
+				<select name="day">
+					<option value="0">선택</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+				일&nbsp;&nbsp;
+				<input type="radio" name="sex" value="m" checked>남
+				<input type="radio" name="sex" value="w">여
+			</td>
+		</tr>
+		<tr>
+			<td class="left">*우편번호</td>
+			<td>
+				<input type="text" name="zip1" size="3"/>-
+				<input type="text" name="zip2" size="3"/>
+				<img src="../images/zipcode.gif"/>
+			</td>
+		</tr>
+		<tr>
+			<td width="200" class="left">*집주소</td>
+			<td><input type="text" name="addr" size="50"></td>
+		</tr>
+		<tr>
+			<td width="200" class="left">*상세주소</td>
+			<td><input type="text" name="addrdetail" size="50"></td>
+		</tr>
+		<tr>
+			<td width="200" class="left">*연락처</td>
+			<td><input type="text" name="name"></td>
+		</tr>
+		<tr>
+			<td width="200" class="left">*이메일</td>
+			<td>
+				<input type="text" name="email1" size="30">@
+				<select name="email2">
+					<option value="0" checked>선택하세요</option>
+					<option value="1">gmail.com</option>
+					<option value="2">naver.com</option>
+					<option value="3">daum.net</option>
+				</select>
+				<img src="../images/confirm.gif"/>
+			</td>
+		</tr>
+		<tr>
+			<td width="200" class="left">휴대폰</td>
+			<td><input type="text" name="name"></td>
+		</tr>
+		<tr>
+			<td width="200" class="left">회사전화</td>
+			<td><input type="text" name="name"></td>
+		</tr>
+		<tr>
+			<td rowspan="2" class="left">회사주소</td>
+			<td>
+				<input type="text" name="zip1" size="3"/>-
+				<input type="text" name="zip2" size="3"/>
+				<img src="../images/zipcode.gif"/>
+			</td>
+		</tr>
+		<tr>
+			<td><input type="text" name="name" size="50"></td>
+		</tr>
+	</table>
+	<table class="footertable">
+		<tr>
+			<td align="center">
+				<img src="../images/save.gif">
+				<img src="../images/cancel.gif">
+			</td>
+		</tr>
+	</table>
+	</center>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	th,td{
+		border : 1px solid #444;
+	}
+</style>
+</head>
+<body>
+<h1>HTML 연습</h1>
+<hr size="3" color="gray"/>
+<table>
+	<tr>
+		<td>등록카테고리</td>
+		<td>
+			<select>
+				<option>대분류</option>
+			</select>
+			<select>
+				<option>중분류</option>
+			</select>
+			<select>
+				<option>소분류</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>상품명</td>
+		<td><input type="text"/></td>
+	</tr>
+	<tr>
+		<td>소비자가</td>
+		<td><input type="text" value="0"/>콤마(,)없이 숫자로만 입력(보기:10000)</td>
+	</tr>
+	<tr>
+		<td>부가 포인트</td>
+		<td><input type="text"/>이 상품에 부가할 마일리지포인트</td>
+	</tr>
+	<tr>
+		<td>상세설명</td>
+		<td><textarea cols="50" rows="5" placeholder="상품설명입력"></textarea></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2">
+			<button type="button">등록</button>
+			<a href="list.html">목록</a>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

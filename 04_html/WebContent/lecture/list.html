@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  	th {
+		align : center;
+	}
+	td, th {
+		border : 1px solid #444;
+	}
+</style>
+</head>
+<body>
+<h1>HTML 연습</h1>
+<hr size="3" color="gray"/>
+<table>
+	<tr>
+		<th>전체<input type="checkbox" name="all"></th>
+		<th>상품명</th>
+		<th>소비자가</th>
+		<th>부가포인트</th>
+		<th>등록일</th>
+		<th>수정/삭제</th>
+	</tr>
+	<tr>
+		<td><input type="checkbox"></td>
+		<td><a href="registForm.html">[나비드 라텍스]100% 천연 라텍스 땅콩형 베개</a></td>
+		<td>100,000,000</td>
+		<td>10,000</td>
+		<td>2010.01.01</td>
+		<td>
+			<button type="button" onclick="alert('수정');">수정</button>
+			<button type="button" onclick="alert('삭제');">삭제</button>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle" id="bottom" colspan="6" rowspan="3"><a href="registForm.html">상품등록</a></td>
+	</tr>
+	
+</table>
+</body>
+</html>
