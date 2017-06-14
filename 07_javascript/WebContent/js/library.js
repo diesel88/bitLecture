@@ -214,3 +214,88 @@ function mlec(val) {
 }
 
 var $ = mlec;
+
+/*
+$.ajax({
+	type : "GET", 
+	url : "test01", 
+	data : {msg: "aaa"}, 
+	dataType : "json", 	//json, xml
+	success : function(){}		
+});
+*/
+
+// ajax 처리 함수 등록
+$.ajax = function(options) {
+	/*
+	console.log(options.type);
+	console.log(options.url);
+	console.log(options.data);
+	console.log(options.dataType);	
+	console.log(options.success);
+	*/
+	
+	
+	var xhr = new XMLHttpRequest();
+	xhr.onreadysatechange = function () {
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200) {
+				var result = xhr.responseText;
+				switch(options.dataType) {
+				case "json"	:
+					result = JSON.parse(xhr.responseText);
+					break;
+				case "xml" :
+					result = xhr.responseXML;
+					break;
+				}
+				// 성공시 사용자가 successs에 지정한 함수 실행
+				options.success(result);
+			}
+		}
+	};
+	// 호출 처리 방식
+	var method = options.type ? options.type : "GET";
+	if (method != "GET" && method != "POST") {
+		method = "GET";
+	}
+//	console.log("method: " + method);
+	
+	// 파라미터 처리
+	console.log(options.data);
+	console.log(typeof(options.data));
+	var params = "";
+	// 파라미터가 존재한다면 아래 수행
+	if (options.data) {
+		if (typeof (options.data) == "string") {
+			params = options.data;
+		}
+		// 파라미터가 객체일 경우
+		// {msg: "a", age: 11, name: "abc"}
+		else {
+			for (var key in options.data) {
+				if (params != "") {
+					params += "&";
+				} 
+				params += key + "=" + options.data[key];
+			}
+		}
+	}
+	console.log("params",params);
+	
+	// url 부분 처리
+	// GET 방식일 경우에는 options.url + params
+	var url = options.url;
+	// GET 방식이고 파라미터가 존재하는 경우
+	if (method == "GET" && params != "") {
+		url += "?" + params;
+	}
+	
+	xhr.open(method, url, true);
+	
+	// POST일 경우 헤더를 추가한다.
+	if (method == "POST") {
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	}
+	xhr.send(method == "POST" ? params : null);
+};

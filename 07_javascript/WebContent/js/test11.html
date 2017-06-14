@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/library.js"></script>
+</head>
+<body>
+	<h1>통신으로 서버에서 받은 메세지</h1>
+	<div id="result"></div>
+	<br>
+	<button>Ajax 호출</button>
+	
+	<script>
+		
+		
+		/*
+		$("button").click(function() {
+			
+		});
+		*/
+		$("button").on("click", function() {
+			
+			/*
+			$.ajax({
+				type : "GET", 	// 생략이 가능하고 생략시 GET 방식 호출
+				url : "test01", 
+				data : {msg: "aaa"}, 
+				dataType : "json", 
+				success : function(){}		
+			});
+			*/
+			$.ajax({
+				type : "GET", 
+				url : "hello.jsp", 
+				data : {msg: "aaa", name: "bbb"},
+// 				data : "msg=aaa", 
+				dataType : "json", 
+				success : function(data){
+					$("#result").html(data);
+				}		
+			});
+			
+		});
+	</script>
+</body>
+</html>
