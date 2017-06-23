@@ -18,13 +18,14 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.web.Controller;
 import org.springframework.web.ModelAndView;
+import org.springframework.web.RequestMapping;
 
 import common.db.MyAppSqlConfig;
 import kr.co.mlec.login.mapper.LoginMapper;
 import kr.co.mlec.login.vo.LoginVO;
 
-@WebServlet("/login/Login")
-public class LoginController implements Controller {
+
+public class LoginController {
 
 	private SqlSession session = null;
 	private LoginMapper mapper = null;
@@ -34,23 +35,17 @@ public class LoginController implements Controller {
 		mapper = session.getMapper(LoginMapper.class);
 	}
 	
-	public ModelAndView service(
+	@RequestMapping("/login/login.do")
+	public ModelAndView login(
 			HttpServletRequest request, 
-			HttpServletResponse response) throws Exception {
-		
-		String id = request.getParameter("id");
-		String pass = request.getParameter("pass");
-		
-		LoginVO param = new LoginVO();
-		param.setId(id);
-		param.setPass(pass);
+			LoginVO param) throws Exception {
 		
 		LoginVO user = mapper.selectLogin(param);
 		if (user != null) {
 			HttpSession session = request.getSession();
 			// 세션에 사용자 정보를 저장
 			session.setAttribute("user", user);
-			return new ModelAndView("redirect:" + request.getContextPath() + "/main/Main.do");
+			return new ModelAndView("redirect:" + request.getContextPath() + "/main/main.do");
 		}
 		// 로그인 실패
 		else {
@@ -58,8 +53,24 @@ public class LoginController implements Controller {
 					"error", 
 					"입력하신 정보가 올바르지 않습니다."
 			);
-			return new ModelAndView("LoginForm.do");
+			return new ModelAndView("loginForm.do");
 		}
+	}
+	@RequestMapping("/login/loginForm.do")
+	public void loginForm() throws Exception {
+		
+	}
+	
+	@RequestMapping("/login/logout.do")
+	public String logout(
+			HttpServletRequest request) throws Exception {
+		
+		HttpSession session = 
+				request.getSession();
+		// 세션 삭제
+		session.invalidate();
+		
+		return "redirect:" + request.getContextPath() + "/main/main.do";
 	}
 }
 

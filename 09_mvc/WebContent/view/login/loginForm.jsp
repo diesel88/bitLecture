@@ -16,7 +16,7 @@
 		<h2>로그인</h2>
 		<hr>
 		<p>${error}</p>
-		<form action="Login.do" method="post">
+		<form action="login.do" method="post">
 			<input type="text" name="id" /><br>
 			<input type="text" name="pass" /><br>
 			<button>로그인</button>

@@ -3,38 +3,36 @@ package org.springframework.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.mlec.board.controller.CommentDeleteController;
-import kr.co.mlec.board.controller.CommentRegistController;
-import kr.co.mlec.board.controller.CommentUpdateController;
-import kr.co.mlec.board.controller.DeleteController;
-import kr.co.mlec.board.controller.DetailController;
-import kr.co.mlec.board.controller.ListController;
-import kr.co.mlec.board.controller.UpdateController;
-import kr.co.mlec.board.controller.UpdateFormController;
-import kr.co.mlec.board.controller.WriteController;
-import kr.co.mlec.board.controller.WriteFormController;
-import kr.co.mlec.login.controller.LoginController;
-import kr.co.mlec.login.controller.LoginFormController;
-import kr.co.mlec.login.controller.LogoutController;
-import kr.co.mlec.main.controller.MainController;
 
 public class DispatcherServlet extends HttpServlet {
 	
 	private static final String REDIRECT_PRIFIX = "redirect:";
 	private static final String AJAX_PRIFIX = "ajax:";
 	private URLHandlerMapping mappings;
+	private String prefix, suffix;
+	
 	@Override
-	public void init() throws ServletException {
-		mappings = new URLHandlerMapping();
+	public void init(ServletConfig config) throws ServletException {
+		String ctrlNames = config.getInitParameter("controllers");
+		prefix = config.getInitParameter("prefix");
+		suffix = config.getInitParameter("suffix");
+		try {
+			
+		mappings = new URLHandlerMapping(ctrlNames);
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
 	}
 
 	@Override
@@ -45,7 +43,6 @@ public class DispatcherServlet extends HttpServlet {
 		// 사용자 요청과 연관된 작업 컨트롤러를 찾는다.
 		// 1. 사용자 요청 URI 가져오기
 		String uri = request.getRequestURI();
-		System.out.println("uri : " + uri);
 		
 //		uri = uri.substring("/09_mvc".length());
 //		/09_mvc/board/list.do
@@ -55,24 +52,46 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println("project name : " + contextPath);
 		
 		uri = uri.substring(contextPath.length());
-		System.out.println("uri : " + uri);
 		try {
 
 			// uri 와 연관된 컨트롤러 클래스 호출
 			// 컨트롤러 클래스 : 서블릿 (X)
-			Controller control = mappings.getController(uri); 
+			CtrlAndMethod cam = mappings.getCtrlAndMethod(uri); 
 			
 			// uri 잘못된 경우 
-			if (control == null) {
+			if (cam == null) {
 				throw new ServletException(
 					"요청하신 URL이 존재하지 않습니다."
 				);
 			}
+			// 실행하기 위해서 cam 클래스에 있는 값을 추출
+			Object target = cam.getTarget();
+			Method m = cam.getMethod();
 			
-			// "redirect:detail.do?no=" + no;
-			ModelAndView mav = control.service(request, response);
-			// 화면 페이지 주소
-			String view = mav.getView();
+			
+			// 메서드에 있는 파라미터 정보 추출
+			PreParameterProcess ppp = new  PreParameterProcess();
+			Object[] param = ppp.process(request, m);
+			
+			// 반환타입 처리
+			Class<?> rType = m.getReturnType();
+			String rName = rType.getSimpleName();
+			String view = "";
+			ModelAndView mav = null;
+			
+			switch (rName) {
+			case "String":
+				view = (String)m.invoke(target, param);
+				break;
+			case "void":
+				m.invoke(target, param);
+				view = uri.replace(".do", "");
+				break;
+			case "ModelAndView":
+				mav = (ModelAndView)m.invoke(target, param);
+				view = mav.getView();
+				break;
+			}
 			
 			
 			// 화면 페이지 이동 - forward, sendRedirect
@@ -94,13 +113,15 @@ public class DispatcherServlet extends HttpServlet {
 				
 				}
 			else {
-				Map<String, Object> map = mav.getModel();
-				Set<String> set = map.keySet();
-				for (String key : set) {
-					request.setAttribute( key, map.get(key));
+				if (mav != null) {
+					Map<String, Object> map = mav.getModel();
+					Set<String> set = map.keySet();
+					for (String key : set) {
+						request.setAttribute( key, map.get(key));
+					}
 				}
 				RequestDispatcher rd = 
-						request.getRequestDispatcher(view);
+						request.getRequestDispatcher(prefix+view+suffix);
 				rd.forward(request, response);
 			}
 		} catch (Exception e) {
