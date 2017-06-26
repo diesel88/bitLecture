@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+    	//$를 사용하는 라이브러리의 충돌을 방지
+		$.noConflict();
+    	// prototype.js
+		console.log($);
+    	
+    	// $ 대신 jQuery 란 이름으로접근
+    	/*
+    	jQuery("div")
+    	var j = jQuery;
+    	*/
+    	(function ($) {
+    		console.log($);		// jQuery
+    		
+    	})(jQuery);	//즉시 실행 함수
+    	
+    	jQuery(document).ready(function ($) {
+    		console.log($);  //jQuery
+    	});
+    </script>
+</head>
+
+<body>
+    <div>
+
+
+    </div>
+</body>
+
+</html>

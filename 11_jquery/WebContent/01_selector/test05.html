@@ -1,0 +1,127 @@
+<!--
+	:first-child      :  자식 요소에서 찾는다.
+	:last-child
+	:first-of-type    :  형제 중에서 찾는다.
+	:last-of-type
+	
+	// 엘리먼트 번호 1부터 시작
+	:nth-child(n)
+	:nth-child(even|odd)
+	:nth-of-type(n)
+	:nth-of-type(even|odd)
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>css selectors</title>
+    <style type="text/css">
+        .choice {
+            margin: 5px;
+            padding: 5px;
+            border: solid #000000 thick;
+            background: orange;
+        }
+        
+        .java {
+            font-size: 20px;
+        }
+        
+        .sql {
+            font-weight: bold;
+        }
+        
+        .css {
+            font-style: italic;
+        }
+    </style>
+    <script src="../js/jquery-3.2.1.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>선택자 연습</h1>
+        <ul id="language">
+            <li class="java">Java Programming
+                <ul>
+                    <li>조건문</li>
+                    <li>반복문</li>
+                    <li>클래스</li>
+                    <li>API 활용</li>
+                    <li>데이터베이스</li>
+                </ul>
+            </li>
+            <li class="sql">SQL
+                <ul>
+                    <li>Select</li>
+                    <li>Insert</li>
+                    <li>Update</li>
+                    <li>Delete</li>
+                </ul>
+            </li>
+            <li class="css">CSS
+                <ul>
+                    <li>선택자</li>
+                    <li>background</li>
+                    <li>text</li>
+                    <li>box</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+// 		$("div > ul:first-child").addClass("choice");	// 아무것도 선택되지 않는다. first-child는 <h1>
+// 		$("div > ul:first-of-type").addClass("choice");
+
+// 		$("ul#language > li > ul > li:first-child").addClass("choice");
+
+// 		$("ul#language > li > ul > li:last-child").addClass("choice");
+// 		$("ul#language > li > ul > li:last-of-type").addClass("choice");
+		
+// 		$("ul:nth-child(even)").addClass("choice");
+// 		$("ul:nth-child(odd)").addClass("choice");
+// 		$("ul:nth-of-type(odd)").addClass("choice");
+		$("ul:nth-of-type(even)").addClass("choice");
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
