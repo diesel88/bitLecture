@@ -39,7 +39,17 @@
         <p>애니메이션 효과</p>
     </div>
     <script>
-
+		$("button:eq(0)").click(function () {
+			$("#effDiv").hide(2000);
+		});
+		$("button:eq(1)").click(function () {
+			$("#effDiv").show(2000);
+			
+		});
+		$("button:eq(2)").click(function () {
+			$("#effDiv").toggle(2000);
+			
+		});
     </script>
 </body>
 </html>

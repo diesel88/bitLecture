@@ -11,7 +11,17 @@
         <textarea cols="70"rows="5"></textarea>
     </div>
     <script>
-
+		$("textarea").keyup(function () {
+			// 입력 글자수
+			var len = $(this).val().length;
+			$("#countSpan").text(len);
+			
+			var color = "black";
+			if (len > 50) {
+				color = "tomato";
+			}
+			$("#countSpan").css("color", color);
+		});
     </script>
 </body>
 </html>

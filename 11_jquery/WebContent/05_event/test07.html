@@ -1,3 +1,10 @@
+<!-- 
+	mouseenter
+	mouseleave
+	mousedown
+	mouseup
+	mousemove
+ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +31,26 @@
     <p>이벤트 <span>연습</span></p>
     <div></div>
 	<script>
-
+		$("p")
+		.mouseenter(function () {
+			$("div").prepend("마우스 들어감<br>");
+		})
+		.mouseleave(function () {
+			$("div").prepend("마우스 나감<br>");
+			
+		})
+		.mousedown(function () {
+			$("div").prepend("마우스 눌렀음<br>");
+			
+		})
+		.mouseup(function () {
+			$("div").prepend("마우스 올라갔음<br>");
+			
+		})
+		.mousemove(function () {
+			$("div").prepend("마우스 움직이는중<br>");
+			
+		})
 	</script>    
 </body>
 </html>

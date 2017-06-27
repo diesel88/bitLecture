@@ -32,7 +32,32 @@
     <button>finish</button>
     <div></div>
     <script>
-
+		$("button:eq(0)").click(function () {
+			$("div").animate({left: 500}, 3000)
+					.animate({top: 200}, 3000)
+					.animate({width: 200, height: 200}, 3000);
+		});
+		$("button:eq(1)").click(function () {
+// 			$("div").stop();	// 현재 진행중인 효과는 중지, 나머지 효과는 수행
+						//clearQueue, jumpToEnd
+// 			$("div").stop(false, false);
+			// 그 자리에서 현재 효과를 중지하고 큐의 내용 삭제
+			// 멈춘다.
+// 			$("div").stop(true, false);
+			// 현재 수행중인 효과의 완료단계로 이동하고 
+			// 큐의 나머지 내용 실행
+// 			$("div").stop(false, true);
+			
+			$("div").stop(true, true);
+		});
+		$("button:eq(2)").click(function () {
+			// 현재 진행중인 효과는 실행하고, 나머지 효과는 삭제
+			$("div").clearQueue();	
+		});
+		$("button:eq(3)").click(function () {
+			// 전부 진행된 상태로 완료
+			$("div").finish();	
+		});
     </script>
 </body>
 </html>

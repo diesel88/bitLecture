@@ -1,3 +1,6 @@
+<!-- 
+	one : 이벤트 한번만 실행하기
+ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +31,13 @@
 	<br /><br />
     <p>이벤트 연습</p>
     <script>
-
+		$("button:eq(0)").click(function () {
+			alert("클릭됨");
+			$(this).off("click");
+		});
+		$("button:eq(1)").one("click", function () {
+			alert("클릭됨");
+		});
      </script>
 </body>
 </html>

@@ -16,7 +16,11 @@
 <body>
     <div></div>
 	<script>
-
+		$("div").click(function () {
+			$(this).animate(
+					{width: "+=50", height: "+=50"}
+					, "slow");
+		});
 	</script>    
 </body>
 </html>

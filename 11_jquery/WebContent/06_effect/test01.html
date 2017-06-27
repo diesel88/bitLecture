@@ -40,7 +40,28 @@
         <p>숨겨져 있는 영역</p>
     </div>
     <script>
-
+		$("button:eq(0)").click(function () {
+			
+			/*
+			$("#effDiv1").hide();
+			$("#effDiv2").show();
+			*/
+			$("#effDiv1, #effDiv2").toggle();
+		});
+		$("button:eq(1)").click(function () {
+			/*
+			$("#effDiv1").fadeOut();
+			$("#effDiv2").fadeIn();
+			*/
+			$("#effDiv1, #effDiv2").fadeToggle();
+		});
+		$("button:eq(2)").click(function () {
+			/*
+			$("#effDiv1").slideUp();
+			$("#effDiv2").slideDown();
+			*/
+			$("#effDiv1, #effDiv2").slideToggle();
+		});
     </script>
 </body>
 </html>

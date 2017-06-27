@@ -5,6 +5,10 @@
 		- resize, scroll, ready
 	폼과 연관
 	    - submit, blur, change, focus, select
+	    
+	    $("#mForm").on("submit", fun....);
+	    $("#mForm").submit(fun....);
+	    
 	키보드와 마우스
 	    - keydown, keyup, keypress
 	    - mousedown, mouseup, mouseenter, mouseleave, mouseout
@@ -43,7 +47,49 @@
     
     <div></div>
     <script>
- 
+    	/*
+ 		$("p").click(function () {
+ 			$("div").append("클릭됨<br>");
+ 		});
+ 		$("p").mouseenter(function () {
+ 			$("div").append("마우스 들어감<br>");
+ 		});
+ 		$("p").mouseleave(function () {
+ 			$("div").append("마우스 나감<br>");
+ 		});
+ 		*/
+ 		/*
+ 		$("p").click(function () {
+ 			$("div").append("클릭됨<br>");
+ 		})
+ 		.mouseenter(function () {
+ 			$("div").append("마우스 들어감<br>");
+ 		})
+ 		.mouseleave(function () {
+ 			$("div").append("마우스 나감<br>");
+ 		});
+ 		*/
+ 		/*
+ 		$("p")
+ 		.click(function () {
+ 			$("div").append("클릭됨<br>");
+ 		})
+ 		.hover(
+ 				function () {
+ 		 			$("div").append("마우스 들어감<br>");
+ 		 		},
+ 		 		function () {
+ 		 			$("div").append("마우스 나감<br>");
+ 		 		}
+ 		);
+ 		*/
+ 		$("#f").submit(function () {
+ 			$("div").prepend("서브밋 이벤트 발생<br>");
+ 			
+ 			// Ajax 코딩...
+ 			
+ 			return false;
+ 		});
     </script>
 </body>
 </html>

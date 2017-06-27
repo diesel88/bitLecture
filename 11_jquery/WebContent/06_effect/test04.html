@@ -18,7 +18,58 @@
     <div></div><div></div>
     <div></div><div></div>
     <script>
-
+		$("div").hover(
+				/*
+				function () {
+					$(this).animate({margin: 50}, "slow");
+				},
+				function () {
+					$(this).animate({margin: 0}, "slow");
+				}
+				*/
+				/*
+				function () {
+					$(this).animate({opacity: 0.1}, "slow");
+				},
+				function () {
+					$(this).animate({opacity: 1.0}, "slow");
+				}
+				*/
+				/*
+				function () {
+					$(this).animate({left: 500}, "slow");
+				},
+				function () {
+					$(this).animate({left: 0}, "slow");
+				}
+				*/
+				/*
+				function () {
+					$(this).animate({width: 200}, "slow");
+				},
+				function () {
+					$(this).animate({width: 50}, "slow");
+				}
+				*/
+				function () {
+					$(this).animate(
+							{
+								width: 200,
+								margin: 50,
+								opacity: 0.5
+							}, 
+							"slow");
+				},
+				function () {
+					$(this).animate(
+					{
+						width: 50,
+						margin: 0,
+						opacity: 1.0
+					}, 
+					"slow");
+				}
+		);
     </script>
 </body>
 </html>

@@ -1,3 +1,8 @@
+<!-- 
+	이벤트 제거 : off
+	off(event type) : 해당 이벤트 타입만 제거
+	off() : 전체 이벤트를 제거
+ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +39,25 @@
     <p>이벤트 연습</p>
     <div></div>
     <script>
-
+		
+    	// p 엘리먼트에 click, mouseenter 이벤트를 설정
+    	$("p")
+    	.click(function () {
+    		$("div").append("마우스 클릭됨<br>");
+    	})
+    	.mouseenter(function () {
+    		$("div").append("마우스 들어감<br>");
+    	});
+    	
+    	$("button:eq(0)").click(function () {
+    		$("p").off("click");
+    	});
+    	$("button:eq(1)").click(function () {
+    		$("p").off("mouseenter");
+    	});
+    	$("button:eq(2)").click(function () {
+    		$("p").off();
+    	});
      </script>
 </body>
 </html>
