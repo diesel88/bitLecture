@@ -16,7 +16,59 @@
 	<button>요청</button>
 	<div id="result"></div>
 	<script>
-
+	$("button").click(function () {
+		/*
+		$.get(
+			"/11_jquery/ajax/test01",
+			 function (result) {
+					$("#result").html(result);
+			}
+			
+		);
+		*/
+		/*
+		$.get(
+				"/11_jquery/ajax/test02",
+				{ msg: "hello~" },
+				function (result) {
+						$("#result").html(result);
+				}
+				
+		);
+		*/
+		/*
+		$.get({
+				url: "/11_jquery/ajax/test02",
+				data: { msg: "hello~" },
+				success: function (result) {
+						$("#result").html(result);
+				}
+		})
+		.done(function (result) {
+			alert("done~~");
+		});
+		*/
+		/*
+		$.post(
+				"/11_jquery/ajax/test02",
+				{ msg: "hello~" },
+				function (result) {
+					$("#result").html(result);
+				}
+				
+		);
+		*/
+		/*
+		$("#result").load("/11_jquery/ajax/test01");
+		*/
+		$.getJSON(
+			"/11_jquery/ajax/test02",
+			{ msg: "hello~" },
+			function (result) {
+				$("#result").html(result.result);
+			}
+		);
+	});
 	</script>
 </body>
 </html>

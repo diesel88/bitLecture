@@ -6,7 +6,7 @@
 <script src="../js/jquery-3.2.1.js"></script>
 </head>
 <body>
-	<form id="ajaxForm" action="/09_jquery/ajaxfile/exam01"
+	<form id="ajaxForm" action="/11_jquery/ajaxfile/test02"
 	      method="post"
 	      enctype="multipart/form-data">
 		<input type="text" name="msg" /><br>
@@ -14,7 +14,29 @@
 		<button type="button">업로드</button>	      
 	</form>
 	<script>
-
+		$("button").click(function () {
+			var fileEle = $("input[name='attachFile']")[0];
+			console.dir(fileEle.files);
+			console.dir(fileEle.files[0]);
+			
+			// 폼의 데이터를 처리할 수 있는 스크립트 객체
+			var fd = new FormData();
+			fd.append("msg", $("input[name='msg']").val());
+			fd.append("attachFile", fileEle.files[0]);
+			fd.append("attachFile1", fileEle.files[1]);
+			
+			$.ajax({
+				url: "/11_jquery/ajaxfile/test02",
+				data: fd,
+				type: "POST",
+				// 파일 업로드 처리 위한 옵션 추가
+				processData: false,	//name=value 로 처리하지 마
+				contentType: false,
+				success: function (result) {
+					alert("FormData를 이용한 업로드 성공");
+				}
+			});
+		});
 	</script>
 </body>
 </html>

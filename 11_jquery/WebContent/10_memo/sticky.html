@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div#addBtn {
+		border: solid 1px black;
+		background-color: yellowgreen;
+		position: absolute;
+		width: 100px;
+		height: 30px;
+		right: 10px;
+		top: 10px;
+		text-align: center;
+		vertical-align: middle;
+		line-height: 30px;
+	}
+	body {
+		background-color: skyblue;
+	}
+	div.memo {
+		width: 200px;
+		height: 300px;
+		background-color: yellow;
+		box-shadow: 5px 5px 5px 5px #666;
+		top: 100px;
+		left: 10px;
+/* 		float: left; */
+		position: absolute;
+	}
+/* 	div#test { */
+/* 		width: 200px; */
+/* 		height: 300px; */
+/* 		background-color: yellow; */
+/* 		box-shadow: 5px 5px 5px 5px #666; */
+/* 		top: 100px; */
+/* 		left: 10px; */
+/*  		float: left;  */
+/* 		position: absolute; */
+/* 	} */
+</style>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<div id="addBtn">
+		<img src="./images/icon_add_stickynote.gif"/>메모추가
+	</div>
+	<div id="body"></div>
+	
+	<script>
+		
+	
+	
+	
+	var i=0;
+		$("#addBtn").click(function () {
+// 			$("#body").append("<div contentEditable='true' class='memo' id='memo"+i+"'></div>");
+			$("<div contentEditable='true' class='memo' id='memo"+i+"'></div>").appendTo("#body");
+			$(".memo").draggable();
+		});
+		
+		/*
+		var bDrag = false;
+		$("#body").on("mouseup",".memo",function() {
+			bDrag = false;
+			console.log("mouseup");
+		});
+		$("#body").on("mousemove",".memo",function(event) {
+			if(bDrag) {
+			console.log("mousemove");
+				var pos = $(this).offset();
+				var left = pos.left + (event.clientX-event.offsetX);
+				var top = pos.top + (event.clientY-event.offsetY);
+				$(this).css("left", left).css("top", top);
+			}
+		});
+		$("#body").on("mousedown", ".memo",function() {
+			console.log("mousedown");
+			bDrag = true;
+		});*/
+		
+		
+	</script>
+</body>
+</html>

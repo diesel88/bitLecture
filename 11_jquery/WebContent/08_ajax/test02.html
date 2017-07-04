@@ -2,7 +2,9 @@
 	$.ajax(options);
 	options 주요 속성
 	url :  요청하려는 서버 페이지 주소(기본 : 현재페이지)
-	type : 요청 메서드, GET, POST, PUT, DELETE
+	type : 요청 메서드, 
+			GET(조회), POST(등록), 
+			PUT(수정), DELETE(삭제) - REST방식
 	data : 파라미터 문자열
 	dataType : 서버로부터 응답받기를 원하는 데이터 타입
 
@@ -23,7 +25,68 @@
 	<button>호출</button>
 	<div id="result"></div>
 	<script>
-
+	$("button").click(function () {
+		// type - default는 GET
+		/*
+		$.ajax({
+			url: "/11_jquery/ajax/test02",
+// 			type: "GET"
+			type: "POST"
+		})
+		.done(function (result) {
+			$("#result").html(result);
+		});
+		*/
+		
+		// data - 문자열, 객체 형태로 파라미터를 넘김
+		/*
+		$.ajax({
+			url: "/11_jquery/ajax/test02",
+// 			data: "msg=" + $("#msg").val()
+			data: {
+				msg: $("#msg").val()
+			}
+		})
+		.done(function (result) {
+			$("#result").html(result);
+		});
+		*/
+		// dataType
+		/*
+		$.ajax({
+			url: "/11_jquery/ajax/test02",
+// 			data: "msg=" + $("#msg").val()
+			data: {
+				msg: $("#msg").val()
+			},
+// 			dataType: "html"
+// 			dataType: "xml"
+			dataType: "json"
+		})
+		.done(function (result) {
+			console.log(result);
+			$("#result").html(result.result);
+		});
+		*/
+		//beforeSend : 전송하기전 호출됨
+		$.ajax({
+			url: "/11_jquery/ajax/test02",
+// 			data: "msg=" + $("#msg").val()
+			data: {
+				msg: $("#msg").val()
+			},
+			beforeSend: function () {
+				var $msg = $("#msg").val();
+				if (!$msg) {
+					alert("값을 입력하세요");
+					return false;
+				}
+			}
+		})
+		.done(function (result) {
+			$("#result").html(result);
+		});
+	});
 	</script>
 </body>
 </html>

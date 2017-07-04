@@ -13,7 +13,45 @@
 	<button>호출</button>
 	<div id="result"></div>
 	<script>
-
+	/*
+	$("button").click(function () {
+		$.ajax(
+			"/11_jquery/ajax/test01",
+			{
+				success: function (result) {
+					$("#result").html(result);
+				}
+			}
+		);
+	});
+	*/
+	/*
+	$("button").click(function () {
+		$.ajax(
+			
+			{
+				
+				url: "/11_jquery/ajax/test01",			
+				success: function (result) {
+					$("#result").html(result);
+				},
+				error: function () {},
+				complete: function () {}
+			});
+	});
+	*/
+	
+	
+	$("button").click(function () {
+		$.ajax({
+				url: "/11_jquery/ajax/test01",			
+			})
+			.done(function (result) {
+				$("#result").html(result);
+			})
+			.fail(function () {})
+			.always(function () {});
+	});
 	</script>
 </body>
 </html>

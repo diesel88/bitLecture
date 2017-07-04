@@ -37,7 +37,29 @@
 	 	<button>확인</button><br>
 	</form>
 	<script>
-
+	$("#mForm").submit(function () {
+		// 파라미터 처리
+		var param = $("#mForm").serialize();
+		console.log(param);
+		
+		$.ajax({
+			url: "/11_jquery/ajax/test02",
+			data: $("#mForm").serialize()
+		})
+		.done(function (result) {
+			console.log(result);
+		});
+		
+		return false;
+	});
+		/*
+		$.ajax({
+			url: "/11_jquery/ajax/test02",
+			data: {
+				
+			}
+		});
+		*/
 	</script>
 </body>
 </html>

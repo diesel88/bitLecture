@@ -1,0 +1,75 @@
+<!-- 
+	$.ajax(options);
+	options 주요 속성
+	url :  요청하려는 서버 페이지 주소(기본 : 현재페이지)
+	type : 요청 메서드, 
+			GET(조회), POST(등록), 
+			PUT(수정), DELETE(삭제) - REST방식
+	data : 파라미터 문자열
+	dataType : 서버로부터 응답받기를 원하는 데이터 타입
+
+	contentType : 요청시 서버에 전달하는 데이터 타입
+	headers : 요청시 전달할 헤더값을 객체 형태로 지정
+
+	beforeSend : 요청을 서버에 전송하기 전에 실행될 함수
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="waitme/waitMe.css">
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="waitme/waitMe.js"></script>
+</head>
+<body>
+	<input type="text" id="msg" />
+	<button>호출</button>
+	<div id="result"></div>
+	<script>
+		$(document).ajaxStart(function () {
+			$("body").waitMe({
+				effect: 'ios',
+				text: '처리중입니다.',
+				bg: 'rgba(255,255,255,0.7)',
+				color: '#000',
+				source: 'waitme/img.svg'
+
+			});
+		})
+	   .ajaxStop(function () {
+		   $("body").waitMe("hide");
+	   });
+	$("button").click(function () {
+	   
+		$.ajax({
+			url: "/11_jquery/ajax/test02",
+// 			data: "msg=" + $("#msg").val()
+			data: {
+				msg: $("#msg").val()
+			},
+			beforeSend: function () {
+				var $msg = $("#msg").val();
+				if (!$msg) {
+					alert("값을 입력하세요");
+					return false;
+				}
+			}
+		})
+		.done(function (result) {
+			$("#result").html(result);
+		});
+	});
+	
+	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

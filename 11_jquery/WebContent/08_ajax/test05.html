@@ -1,6 +1,5 @@
 <!-- 
-	$.ajax(url, options);
-	$.ajax(options);
+	다중 Ajax 처리
  -->
 <!DOCTYPE html>
 <html>
@@ -13,7 +12,39 @@
 	<button>호출</button>
 	<div id="result"></div>
 	<script>
-
+	$("button").click(function () {
+		/*
+		$.ajax({
+				url: "/11_jquery/ajax/test01"			
+			})
+			.done(function (result) {
+				$("#result").html(result);
+				
+				$.ajax({
+					url: "/11_jquery/ajax/test02",
+					data: {msg: "다중 호출"}
+				})
+				.done(function (result) {
+					$("#result").html(result);
+					alert("ajax 실행 종료후 처리");
+				});
+			});
+		*/
+		var $call1 = $.ajax("/11_jquery/ajax/test01");
+		
+		var $call2 = $.ajax({
+			url: "/11_jquery/ajax/test02",
+			data: {msg: "다중 호출"}
+		});
+		
+		
+		$.when($call1, $call2).done(function (result1, result2) {
+			console.log(result1);
+			console.log(result2);
+			
+			console.log("ajax 실행 종료후 처리");
+		});
+	});
 	</script>
 </body>
 </html>
