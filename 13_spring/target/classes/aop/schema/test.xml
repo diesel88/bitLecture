@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	   xmlns:p="http://www.springframework.org/schema/p" 
+	   xmlns:aop="http://www.springframework.org/schema/aop" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop 
+                           http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 핵심 기능 클래스 -->
+	<bean id="board" class="aop.O4schema.BoardController"/>
+	<bean id="member" class="aop.O4schema.MemberController"/>
+
+    <!-- 공통 기능 클래스 -->
+    <bean id="log" class="aop.O4schema.LogAspect"/>
+    <bean id="time" class="aop.O4schema.TimeAspect"/>
+    
+    <!-- AOP 설정 -->  
+    <!-- 인터페이스 타입으로 빈을 가져와야 함 -->                     
+<!-- 	<aop:config> -->
+	<aop:config proxy-target-class="true">
+<!-- 		<aop:pointcut id="pCut" expression="execution(public * aop.O4schema.*Controller.service(..))"/> -->
+<!-- 		<aop:pointcut id="pCut" expression="execution(public * aop.O4schema.*.service(..))"/> -->
+<!-- 		<aop:pointcut id="pCut" expression="execution(public * aop.O4schema..*.service(..))"/> aop.O4schema 하위 패키지의 모든 클래스 -->
+<!-- 		<aop:pointcut id="pCut" expression="execution(public * aop.O4schema..Controller+.service(..))"/>  -->
+<!-- 		<aop:pointcut id="pCut" expression="execution(public * aop.O4schema..service(..))"/>  -->
+<!-- 		<aop:pointcut id="pCut" expression="execution(public * aop.O4schema..*(..))"/>  -->
+		<aop:pointcut id="pCut" expression="execution( * service(..))"/> 
+		<aop:aspect ref="log">
+			<aop:after method="showLog" pointcut-ref="pCut"/>
+		</aop:aspect>
+		<aop:aspect ref="time">
+			<aop:around method="exeTime" pointcut="execution( * service(..))"/>
+		</aop:aspect>
+	</aop:config>
+    
+	
+</beans>	
+
+
+
+
+
+
+
+
+
+

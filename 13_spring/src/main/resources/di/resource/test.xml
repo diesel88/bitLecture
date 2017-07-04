@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	   xmlns:p="http://www.springframework.org/schema/p" 
+	   xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 자바에 설정한 자동주입 어노테이션을 인식하기 위한 설정 -->
+    <context:annotation-config />
+    
+	<!-- HamSand 객체 등록하기 -->
+	<bean id="ham" class="di.OAresource.HamSand">
+		<qualifier value="h" />
+	</bean>
+	<bean id="egg" class="di.OAresource.EggSand"/>
+	<bean id="menu" class="di.OAresource.Menu" />
+		
+</beans>	
+
+
+
+
+
+
+
+
+
+
